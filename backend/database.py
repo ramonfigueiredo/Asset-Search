@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import inspect
 from sqlalchemy.exc import OperationalError
-from .config import DATABASE_URI
+# from .config import DATABASE_URI
 
 Base = declarative_base()
 
@@ -24,6 +24,7 @@ class ImageAsset(Base):
         self.embeddings = embeddings
 
 
+DATABASE_URI = 'backend/asset_search.db'
 engine = create_engine(f'sqlite:///{DATABASE_URI}')
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -48,5 +49,7 @@ def add_cluster_column():
         connection.close()
 
 
-# Call this function once to ensure the column exists
-add_cluster_column()
+if __name__ == "__main__":
+    initialize_database()
+    # Call this function once to ensure the column exists
+    add_cluster_column()
