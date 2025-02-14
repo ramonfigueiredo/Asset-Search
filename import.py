@@ -13,10 +13,13 @@ def main():
     print("Database initialized and cluster_index column ensured.")
 
     # Ingest images from a directory
-    directory_path = input("Enter the path to the directory containing images: ")
-    dataset_name = input("Enter the dataset name: ")
-    ingest_images_from_directory(directory_path, dataset_name)
-    print(f"Image URIs from {directory_path} have been successfully ingested into the '{dataset_name}' dataset.")
+    # directory_path = input("Enter the path to the directory containing images: ")
+    # dataset_name = input("Enter the dataset name: ")
+    for dir_name in ['cat', 'dog', 'car', 'plane', 'bike']:
+        directory_path = os.path.join(os.getcwd(), 'data', 'test_images', dir_name)
+        dataset_name = dir_name
+        ingest_images_from_directory(directory_path, dataset_name)
+        print(f"Image URIs from {directory_path} have been successfully ingested into the '{dataset_name}' dataset.")
 
 
 if __name__ == "__main__":
