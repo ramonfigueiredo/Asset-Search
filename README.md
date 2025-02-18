@@ -61,6 +61,19 @@ To run the Streamlit application, execute:
 streamlit run app.py
 ```
 
+### Running the Application using Docker
+
+1. Build the Docker image
+
+```bash
+docker build -t asset-search .
+```
+
+2. Run the Docker container
+```bash
+docker run -p 8501:8501 --name asset-search asset-search
+```
+
 ### Usage
 
 1. Open the Streamlit web application in your browser (usually at `http://localhost:8501`).
